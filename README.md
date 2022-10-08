@@ -1,1 +1,1 @@
-# 3D_Graphics_-_Animation_Project
+# 3D_Graphics-Animation_Project
