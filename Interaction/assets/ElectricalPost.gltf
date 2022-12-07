@@ -59,8 +59,8 @@
     "images" : [
         {
             "mimeType" : "image/png",
-            "name" : "UntitledPylon",
-            "uri" : "textures/UntitledPylon.png"
+            "name" : "Mat1",
+            "uri" : "Mat1.png"
         }
     ],
     "accessors" : [

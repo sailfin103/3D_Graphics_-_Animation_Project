@@ -87,6 +87,15 @@ auto currentTime = 0.0f;							// Framerate
 auto deltaTime = 0.0f;								// time passed
 auto lastTime = 0.0f;								// Used to calculate Frame rate
 
+float yaw = -90.0f;
+float pitch = 0.0f;
+
+bool firstMouse = true;
+float lastX = 800.0f /2.0;
+float lastY = 600.0f /2.0;
+bool mouseToggleView = false;
+
+
 Pipeline pipeline;									// Add one pipeline plus some shaders.
 vector <Content> content;
 Debugger debugger; // Add one debugger to use for callbacks ( Win64 - openGLDebugCallback() ) or manual calls ( Apple - glCheckError() )
@@ -139,7 +148,7 @@ int main()
 	} 
 
 	glfwSetWindowPos(window, 10, 10); // Place it in top corner for easy debugging.
-	glfwMakeContextCurrent(window);	  // making the OpenGL context current
+	glfwMakeContextCurrent(window);	  // making the OpenGL context currentw
 
 	// GLAD: Load OpenGL function pointers - aka update specs to newest versions - plus test for errors.
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
@@ -156,7 +165,7 @@ int main()
 	glfwSetCursorPosCallback(window, onMouseMoveCallback);	   // Set callback for mouse move
 	glfwSetScrollCallback(window, onMouseWheelCallback);	   // Set callback for mouse wheel.
 	// glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);	// Set mouse cursor Fullscreen
-	// glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);	// Set mouse cursor FPS fullscreen.
+	//glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);	// Set mouse cursor FPS fullscreen.
 
 	// Setup Dear ImGui and add context	-	https://blog.conan.io/2019/06/26/An-introduction-to-the-Dear-ImGui-library.html
 	IMGUI_CHECKVERSION();
@@ -260,6 +269,16 @@ void startup()
 	Content c6;
 
 	Content c7;
+	Content c8;
+	Content c9;
+
+	Content c10;
+	Content c11;
+	Content c12;
+
+	Content c13;
+
+	Content c14;
 
 	c1.LoadGLTF("assets/Sand1.gltf");
 
@@ -270,9 +289,20 @@ void startup()
 	c6.LoadGLTF("assets/ElectricalPost.gltf");
 
 	c7.LoadGLTF("assets/LampPost.gltf");
+	c8.LoadGLTF("assets/LampPost.gltf");
+	c9.LoadGLTF("assets/LampPost.gltf");
+
+	c10.LoadGLTF("assets/Building.gltf");
+	c11.LoadGLTF("assets/Building.gltf");
+	c12.LoadGLTF("assets/Building.gltf");
+
+	c13.LoadGLTF("assets/Ship.gltf");
+
+	c14.LoadGLTF("assets/dog.gltf");
 
 	//Sand
 	content.push_back(c1);
+
 	//Electrical posts
 	content.push_back(c2);
 	content.push_back(c3);
@@ -281,6 +311,16 @@ void startup()
 	content.push_back(c6);
 
 	content.push_back(c7);
+	content.push_back(c8);
+	content.push_back(c9);
+
+	content.push_back(c10);
+	content.push_back(c11);
+	content.push_back(c12);
+
+	content.push_back(c13);
+
+	content.push_back(c14);
 
 	pipeline.CreatePipeline();
 	pipeline.LoadShaders("shaders/vs_model.glsl", "shaders/fs_model.glsl");
@@ -290,31 +330,66 @@ void startup()
 	//Sand Environment--
 	modelPosition.push_back(vec3(0.0f, 0.0f, 0.0f));
 	modelRotation.push_back(vec3(0.0f, 0.0f, 0.0f));
-	modelScale.push_back(vec3(10.0f, 0.2f, 10.0f));
+	modelScale.push_back(vec3(10.0f, 0.125f, 10.0f));
 	//--
 
 	//Electrical Posts --
-	modelPosition.push_back(vec3(-2.0f, 0.4f, -3.7f));
+	modelPosition.push_back(vec3(-2.0f, 0.2f, -2.7f));
 	modelRotation.push_back(vec3(1.0f, 0.0f, 1.8f));
 	modelScale.push_back(vec3(0.3f, 0.3f, 0.3f));
 
-	modelPosition.push_back(vec3(3.5f, 0.4f, -9.0f));
+	modelPosition.push_back(vec3(3.5f, 0.0f, -4.0f));
 	modelRotation.push_back(vec3(-1.0f, 0.0f, 2.0f));
 	modelScale.push_back(vec3(0.3f, 0.3f, 0.3f));
 
-	modelPosition.push_back(vec3(0.9f, 0.7f, 1.0f));
-	modelRotation.push_back(vec3(1.0f, 0.0f, 0.0f));
+	modelPosition.push_back(vec3(0.9f, 0.2f, 1.0f));
+	modelRotation.push_back(vec3(0.8f, 0.0f, 0.2f));
 	modelScale.push_back(vec3(0.3f, 0.3f, 0.3f));
 
-	modelPosition.push_back(vec3(7.5f, 0.4f, 4.0f));
-	modelRotation.push_back(vec3(0.0f, 0.0f, 0.0f));
+	modelPosition.push_back(vec3(5.5f, 0.0f, 4.0f));
+	modelRotation.push_back(vec3(0.0f, 1.0f, 0.0f));
 	modelScale.push_back(vec3(0.3f, 0.3f, 0.3f));
 
-	modelPosition.push_back(vec3(-7.5f, 0.6f, -4.0f));
-	modelRotation.push_back(vec3(-1.0f, 0.0f, 0.7f));
+	modelPosition.push_back(vec3(-7.5f, 0.2f, -4.0f));
+	modelRotation.push_back(vec3(0.0f, 0.0f, 0.7f));
 	modelScale.push_back(vec3(0.3f, 0.3f, 0.3f));
 	//--
 
+	//LampPosts --
+	modelPosition.push_back(vec3(4.0f, 0.0f, 3.0f));
+	modelRotation.push_back(vec3(0.0f, 3.2f, 2.0f));
+	modelScale.push_back(vec3(0.1f, 0.1f, 0.1f));
+
+	modelPosition.push_back(vec3(-5.0f, -1.0f, -2.0f));
+	modelRotation.push_back(vec3(0.0f, 0.0f, 0.0f));
+	modelScale.push_back(vec3(0.1f, 0.1f, 0.1f));
+
+	modelPosition.push_back(vec3(0.0f, 0.7f, 0.0f));
+	modelRotation.push_back(vec3(0.5f, 0.0f, 0.0f));
+	modelScale.push_back(vec3(0.1f, 0.1f, 0.1f));
+	//--
+
+	//--
+	modelPosition.push_back(vec3(2.3f, 0.1f, 7.5f));
+	modelRotation.push_back(vec3(20.0f, 0.0f, 20.0f));
+	modelScale.push_back(vec3(1.0f, 1.0f, 1.0f));
+
+	modelPosition.push_back(vec3(0.0f, -0.7f, 0.0f));
+	modelRotation.push_back(vec3(0.0f, 0.0f, 6.0f));
+	modelScale.push_back(vec3(1.0f, 1.0f, 1.0f));
+
+	modelPosition.push_back(vec3(-8.0f, 0.0f, -4.0f));
+	modelRotation.push_back(vec3(19.0f, 0.0f, 15.0f));
+	modelScale.push_back(vec3(1.0f, 1.0f, 1.0f));
+	//--
+
+	//--
+	modelPosition.push_back(vec3(0.0f, 2.8f, 0.0f));
+	modelRotation.push_back(vec3(0.0f, 0.0f, 0.0f));
+	modelScale.push_back(vec3(0.1f, 0.1f, 0.1f));
+	//--
+
+	//--
 	modelPosition.push_back(vec3(0.0f, 1.0f, 0.0f));
 	modelRotation.push_back(vec3(0.0f, 0.0f, 0.0f));
 	modelScale.push_back(vec3(0.1f, 0.1f, 0.1f));
@@ -351,12 +426,19 @@ void update()
 
 	if (glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS)
 		cameraPosition += cameraSpeed * cameraUp;
-	// if (keyStatus[GLFW_KEY_RIGHT]) cameraPosition.y -= 0.05f;
-	// if (keyStatus[GLFW_KEY_UP]) cameraPosition.x += 0.05f;
 	if (glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS)
 		cameraPosition -= cameraSpeed * cameraUp;
-	// if (keyStatus[GLFW_KEY_Z]) cameraPosition.z += 0.10f;
-	// if (keyStatus[GLFW_KEY_C]) cameraPosition.z -= 0.10f;
+
+	if (glfwGetKey(window, GLFW_KEY_X) == GLFW_PRESS){
+		mouseToggleView = true;
+		glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+	}
+		
+	if (glfwGetKey(window, GLFW_KEY_Z) == GLFW_PRESS){
+		mouseToggleView = false;
+		glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+	}
+		
 
 	if (keyStatus[GLFW_KEY_R]) pipeline.ReloadShaders();
 
@@ -476,7 +558,18 @@ void ui()
 		ImGui::Text("About: 3D Graphics and Animation 2022"); // ImGui::Separator();
 		ImGui::Text("Performance: %.3fms/Frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
 		ImGui::Text("Pipeline: %s", pipeline.pipe.error?"ERROR":"OK");
+
+		float *lightPosition = &lightPos[0];
+		float *lightAmbience= &ia[0];
+		float *lightDiffuse= &id[0];
+		float *lightSpecular = &is[0];
+		ImGui::DragFloat4("Light Position", lightPosition, 0.1f, -20.0f, 20.0f, "%.1f", 1.0f);
+		ImGui::DragFloat4("Light Ambience", lightAmbience, 0.01f, 0.0f, 1.0f, "%.2f", 1.0f);
+		ImGui::DragFloat4("Light Diffusion", lightDiffuse, 0.01f, 0.0f, 1.0f, "%.2f", 1.0f);
+		ImGui::DragFloat4("Specular Light", lightSpecular, 0.01f, 0.0f, 1.0f, "%.2f", 1.0f);
 	}
+
+
 	ImGui::End();
 
 	// Rendering imgui
@@ -516,13 +609,54 @@ void onMouseButtonCallback(GLFWwindow *window, int button, int action, int mods)
 
 void onMouseMoveCallback(GLFWwindow *window, double x, double y)
 {
-	int mouseX = static_cast<int>(x);
-	int mouseY = static_cast<int>(y);
+
+	if(mouseToggleView){
+		return;
+	}
+
+	if (firstMouse)
+	{
+		lastX = x;
+		lastY = y;
+		firstMouse = false;
+	}
+
+	float xOffset = x - lastX;
+	float yOffset = lastY - y;
+
+	lastX = x;
+	lastY = y;
+
+	float sens = 0.1f;
+	xOffset *= sens;
+	yOffset *= sens;
+
+	yaw += xOffset;
+	pitch += yOffset;
+
+	if(pitch > 89.0f)
+		pitch = 89.0f;
+	if(pitch < -89.0f)
+		pitch = -89.0f;
+
+	glm::vec3 front;
+
+	front.x = cos(glm::radians(yaw)) * cos(glm::radians(pitch));
+	front.y = sin(glm::radians(pitch));
+	front.z = sin(glm::radians(yaw)) * cos(glm::radians(pitch));
+	cameraFront = glm::normalize(front);
+
+
 }
 
 void onMouseWheelCallback(GLFWwindow *window, double xoffset, double yoffset)
 {
-	int yoffsetInt = static_cast<int>(yoffset);
+	if (fovy >= 1.0f && fovy <= 45.0f)
+		fovy -= yoffset;
+	if (fovy <= 1.0f)
+		fovy =1.0f;
+	if (fovy >= 45.0f)
+		fovy = 45.0f;
 }
 
 void APIENTRY openGLDebugCallback(GLenum source,

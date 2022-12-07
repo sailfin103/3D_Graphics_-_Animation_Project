@@ -38,7 +38,17 @@
         {
             "doubleSided" : true,
             "name" : "Material.003",
-            "pbrMetallicRoughness" : {}
+            "normalTexture" : {
+                "index" : 0
+            },
+            "pbrMetallicRoughness" : {
+                "baseColorTexture" : {
+                    "index" : 1
+                },
+                "metallicRoughnessTexture" : {
+                    "index" : 2
+                }
+            }
         }
     ],
     "meshes" : [
@@ -57,11 +67,34 @@
             ]
         }
     ],
+    "textures" : [
+        {
+            "sampler" : 0,
+            "source" : 0
+        },
+        {
+            "sampler" : 0,
+            "source" : 1
+        },
+        {
+            "sampler" : 0,
+            "source" : 2
+        }
+    ],
+    "images" : [
+
+        {
+            "mimeType" : "image/png",
+            "name" : "UntitledL",
+            "uri" : "textures/UntitledL.png"
+        }
+       
+    ],
     "accessors" : [
         {
             "bufferView" : 0,
             "componentType" : 5126,
-            "count" : 3178,
+            "count" : 3200,
             "max" : [
                 5.6940016746521,
                 1.020224928855896,
@@ -77,13 +110,13 @@
         {
             "bufferView" : 1,
             "componentType" : 5126,
-            "count" : 3178,
+            "count" : 3200,
             "type" : "VEC3"
         },
         {
             "bufferView" : 2,
             "componentType" : 5126,
-            "count" : 3178,
+            "count" : 3200,
             "type" : "VEC2"
         },
         {
@@ -96,28 +129,34 @@
     "bufferViews" : [
         {
             "buffer" : 0,
-            "byteLength" : 38136,
+            "byteLength" : 38400,
             "byteOffset" : 0
         },
         {
             "buffer" : 0,
-            "byteLength" : 38136,
-            "byteOffset" : 38136
+            "byteLength" : 38400,
+            "byteOffset" : 38400
         },
         {
             "buffer" : 0,
-            "byteLength" : 25424,
-            "byteOffset" : 76272
+            "byteLength" : 25600,
+            "byteOffset" : 76800
         },
         {
             "buffer" : 0,
             "byteLength" : 9600,
-            "byteOffset" : 101696
+            "byteOffset" : 102400
+        }
+    ],
+    "samplers" : [
+        {
+            "magFilter" : 9729,
+            "minFilter" : 9987
         }
     ],
     "buffers" : [
         {
-            "byteLength" : 111296,
+            "byteLength" : 112000,
             "uri" : "Building.bin"
         }
     ]
