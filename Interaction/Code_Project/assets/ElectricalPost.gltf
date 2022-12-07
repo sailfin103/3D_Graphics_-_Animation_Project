@@ -59,8 +59,8 @@
     "images" : [
         {
             "mimeType" : "image/png",
-            "name" : "Mat1",
-            "uri" : "textures/Mat1.png"
+            "name" : "ElectricalPost",
+            "uri" : "textures/ElectricalPost.png"
         }
     ],
     "accessors" : [

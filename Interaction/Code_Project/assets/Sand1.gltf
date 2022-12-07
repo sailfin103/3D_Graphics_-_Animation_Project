@@ -72,8 +72,8 @@
     "images" : [
         {
             "mimeType" : "image/png",
-            "name" : "Untitled",
-            "uri" : "textures/Untitled.png"
+            "name" : "Sand",
+            "uri" : "textures/Sand.png"
         }
     ],
     "accessors" : [
