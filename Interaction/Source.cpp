@@ -77,7 +77,7 @@ auto windowWidth = 800;								// Window width
 auto windowHeight = 800;								// Window height
 auto running(true);							  		// Are we still running our main loop
 mat4 projMatrix;							 		// Our Projection Matrix
-vec3 cameraPosition = vec3(0.0f, 0.0f, 5.0f);		// Where is our camera
+vec3 cameraPosition = vec3(0.0f, 10.0f, 5.0f);		// Where is our camera
 vec3 cameraFront = vec3(0.0f, 0.0f, -1.0f);			// Camera front vector
 vec3 cameraUp = vec3(0.0f, 1.0f, 0.0f);				// Camera up vector
 auto aspect = (float)windowWidth / (float)windowHeight;	// Window aspect ration
@@ -113,11 +113,6 @@ float ka = 0.8f;
 float kd = 0.2f;
 float ks = 1.0f;
 float shininess = 32.0f;
-
-// string modelsFiles[]{
-// 	"assets/Sand.gltf"
-
-// };
 
 
 int main()
@@ -369,7 +364,7 @@ void startup()
 	modelScale.push_back(vec3(0.1f, 0.1f, 0.1f));
 	//--
 
-	//--
+	//buildings--
 	modelPosition.push_back(vec3(2.3f, 0.1f, 7.5f));
 	modelRotation.push_back(vec3(20.0f, 0.0f, 20.0f));
 	modelScale.push_back(vec3(1.0f, 1.0f, 1.0f));
@@ -383,7 +378,7 @@ void startup()
 	modelScale.push_back(vec3(1.0f, 1.0f, 1.0f));
 	//--
 
-	//--
+	//SpaceShip--
 	modelPosition.push_back(vec3(0.0f, 2.8f, 0.0f));
 	modelRotation.push_back(vec3(0.0f, 0.0f, 0.0f));
 	modelScale.push_back(vec3(0.1f, 0.1f, 0.1f));
