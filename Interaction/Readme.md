@@ -10,10 +10,12 @@ The object was then loaded into the scene through .pushback and the model positi
 The scene was built in reference to the original scene created in Blender and in Unreal, trying to closely replicate the built scene. Taking inspiration from Dune and a dystopian scene, where buildings look destroyed and weathered from the changing climate and the sandstorm engulfing the buildings and objects such as the electrical poles and lamp posts. And a small space ship that is hovering in the air looking for signs of life. The scene was built using the model the vector rotation, scale and position values. 
 
 ## Materials used
-The materials used were materials that i had created in blender, and baked and exported alongside the corresponding objects. Where a lot of the objects had a metallic material applied, where the material looks weathered through roughness applied to the material. The buildings, and lamp posts uses a Metallic material/texture. The wind mill uses a wooden coloured material. The ship uses a metallic material and the electrical posts also uses a lighter and rougher colour of metal.
+The materials used were materials that i had created in blender, and baked and exported alongside the corresponding objects. Where a lot of the objects had a metallic material applied, where the material looks weathered through roughness applied to the material. The buildings, and lamp posts uses a Metallic material/texture. The wind mill uses a wooden coloured material. The ship uses a metallic material and the electrical posts also uses a lighter and rougher colour of metal. Finally for the environment, which is the sand dune, the sand material originally used and created in blender was also baked and used for this scene.
 
-## Lighting
+## Lighting and Shaders
+For the lighting, I implemented on single light, that mimics the sun for the whole scene. For the lights, the position changes the actual light position across the scene and can be changed by interacting with the slider values, the ambience changes the actual colour of the light, based on changing the r g b values in the drag slider. The diffusion changes the concentration of the light in the area and can be changed by the slider values and similarly to the specular light, which affects the reflectivity of the objects that are more reflective than others.
 
+The lighting is created and implemented in the source.cpp file as well as using the code learnt from the lectures to implement it in the fragment shader file, fs_model.glsl file.  
 
 ## Interactions
 There are two interactions implemented in the scene, The first main interaction is the user movement using the WASD and Space keys to move around the scene, as well as the mouse cursor fov movement for the player to view the scene. 
